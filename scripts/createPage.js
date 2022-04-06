@@ -110,7 +110,6 @@ const renderLastGame = () => {
 const renderPage = () => {
     timePassed = checkTimePassed() // get hours passed since last game 
     hoursPassed = timePassed[0]
-    minutesPassed = timePassed[1]
 
     if (hoursPassed && hoursPassed < 9)  // create a new game only after 24 hours passed
         renderLastGame()    
