@@ -1,0 +1,79 @@
+/* =================== Buttons =================== */
+
+#inputs div.input {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+#inputs div button {
+    margin-right: 1rem;
+    color: black;
+}
+
+#inputs div button:hover {
+    background-position:0 -100%;
+}
+
+#buttons div {
+    margin-left: 0.5rem;
+    margin-right: 0.01rem;
+    margin-top: 0.1rem; 
+}
+
+#buttons div button {
+    margin-left: 1.1rem;
+    margin-top: 0.5rem; 
+    border: 3px solid transparent;
+} 
+
+tbody tr td button.btn {
+    height: 2.35rem;
+    width: 2.25rem; 
+    margin-left: 1.5rem; 
+    border: 1px solid transparent; 
+    border-radius: 0; 
+    font-size: 1rem;
+}
+
+.box {
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    border: 1px solid transparent;
+}
+
+.btn {
+    background-color: transparent;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.btn-outline {
+    border-color: #6c757d;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transition: border-color .25s ease-out; 
+}
+
+.btn-shake {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    animation-duration: 1s;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.clicked {
+    border-radius: 6px;
+    border-width: 3px;
+}
+
+.slide {
+    background-size: 100% 200%; 
+    background-image: linear-gradient(to bottom, transparent 50%, #6c757d 50%); 
+    transition: background-position 1s;
+}

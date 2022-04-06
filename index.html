@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Numble game</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/buttons.css">
+        <link rel="stylesheet" href="css/modal.css">
+        <link rel="stylesheet" href="css/animation.css">
+    </head>
+
+    <body>
+        <!-- ========================== title div -->
+
+        <div id='head'>
+            <h1>
+                <img id='deleteSave' src='images/delete-icon.svg' />
+                NUMBLE
+                <img id='modalBtn' src='images/title-icon.svg'/>
+            </h1>
+        </div>
+
+        <hr style='width: 15rem;'>
+
+        <!-- ========================== scores modal -->
+
+        <div id='scoresModal' class='modal'>
+            <div class='modal-content'>
+                <span id='close' class='close'>×</span>
+                <div id='modal-body' class='modal-body'>
+                    <div>
+                        <div class='stat-title'>
+                            <h5><b>DAILY STATISTICS</b></h5>
+                        </div>
+                        <div id='modal-stats' class='stat-container'>
+                        </div>
+                        <hr>
+                        <div>
+                            <p><b>Guess Distribution</b></p>
+                            <canvas id='guess_dist' style='padding-right: 10px;'></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== main divs -->
+
+        <div id="inputs"></div>
+
+        <div id="buttons"></div>
+        
+        <div id="copyright">
+            Created by <a href="https://github.com/Paznah123" target="_blank">Paz Nahmias</a>
+            and <a href="https://github.com/savizronen" target="_blank">Ronen Saviz</a>.
+        </div>
+        
+        <!-- ========================== scripts -->
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" src="consts.js"></script>
+        <script type="text/javascript" src="scripts/utils.js"></script>
+        <script type="text/javascript" src="scripts/inits.js"></script>
+        <script type="text/javascript" src="scripts/actions.js"></script>
+        <script type="text/javascript" src="scripts/modal.js"></script>
+        <script type="text/javascript" src="scripts/result.js"></script>
+        <script type="text/javascript" src="scripts/createPage.js"></script>
+
+    </body>
+
+</html>
