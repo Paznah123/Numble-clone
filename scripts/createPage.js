@@ -82,8 +82,10 @@ const renderLastGame = () => {
     for (let i = 0; i < GUESSES_AMOUNT; i++) // get last game's guesses
         guesses[i] = localStorage.getItem(`guess_${i+1}`)   
 
+    const colors = JSON.parse(localStorage.getItem('colors'))
+
     createMainDiv('inputs', GUESSES_AMOUNT, INPUTS_ROW_SIZE, (i, j) => { // reproduce last game guesses
-        bgColor = localStorage.getItem(`guess_${i}_${j-1}_color`)
+        bgColor = colors[i-1][j-1]
         return initButton({
             id: `box_${(i-1)*INPUTS_ROW_SIZE+j}`,
             className: `box btn btn-outline ${bgColor ? '' : 'slide'}`,
@@ -111,7 +113,7 @@ const renderPage = () => {
     timePassed = checkTimePassed() // get hours passed since last game 
     hoursPassed = timePassed[0]
 
-    if (hoursPassed && hoursPassed < 9)  // create a new game only after 24 hours passed
+    if (hoursPassed && hoursPassed < 9)  // create a new game only after 9 hours passed
         renderLastGame()    
     else
         createNewGame() 

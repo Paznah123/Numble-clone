@@ -25,9 +25,6 @@ const gameEnd = (userWon) => {
     if (!userWon) end = ['L', 'O', 'S', 'T'] 
     else { 
         end = ['W', 'I', 'N']
-        document.getElementById('played_stat').innerHTML =  1
-        document.getElementById('won_stat').innerHTML = 1
-        document.getElementById('win_perc_stat').innerHTML = 100
         updateChart(rowId)
     }
 
@@ -65,14 +62,19 @@ const saveData = (userWon) => {
     if (userWon)
         saveDataHelper('won', 0)
 
-    for (let i = 0; i < GUESSES_AMOUNT; i++) { // save guesses to local storage
-        localStorage.setItem(`guess_${i+1}`, guesses[i])
-        for (let j = 0; j < guesses[i].length; j++) { // save colors to local storage
-            let btn = document.getElementById(`box_${i*INPUTS_ROW_SIZE+(j+1)}`)
-            localStorage.setItem(`guess_${i+1}_${j}_color`, btn.style.backgroundColor)
-        }
+
+    const colors = Array.from({length: GUESSES_AMOUNT}, (_, i) => { // create array of guesses colors
+
+        localStorage.setItem(`guess_${i+1}`, guesses[i]) // save guesses to local storage
         localStorage.setItem(`btn_guess_${i+1}`, guess_dist.data.datasets[0].data[i]) // save chart data to local storage
-    }
+        
+        return Array.from({length: INPUTS_ROW_SIZE}, (_, j) => { 
+            const btn = document.getElementById(`box_${i*INPUTS_ROW_SIZE+(j+1)}`)
+            return btn.style.backgroundColor
+        })
+    })
+    localStorage.setItem('colors', JSON.stringify(colors)) // save guesses colors to local storage
+
     localStorage.setItem('win_state', userWon) // save win state to local storage
     localStorage.setItem('win_time', new Date()) // save win time to local storage
     localStorage.setItem('equation', todayEquation) // save equation to local storage
@@ -91,3 +93,8 @@ const updateChart = (rowId) => {
     guess_dist.data.datasets[0].data[rowId-1] = parseInt(guess) + 1
     guess_dist.update()
 }
+
+console.log(todayEquation)
+
+// console.log(localStorage.getItem('win_time'))
+// localStorage.setItem('win_time', 'Thu Apr 0 2022 5:32:13 GMT+0300 (Israel Daylight Time)')
