@@ -52,6 +52,8 @@ const gameEnd = (userWon) => {
                         : ''}`,
         style:  'line-height: 25px; font-size: 1rem;'
     }))
+
+    localStorage.removeItem('lastEquationTime')
 }
 
 // ============================= saves statistics to local storage
@@ -93,8 +95,3 @@ const updateChart = (rowId) => {
     guess_dist.data.datasets[0].data[rowId-1] = parseInt(guess) + 1
     guess_dist.update()
 }
-
-console.log(todayEquation)
-
-// console.log(localStorage.getItem('win_time'))
-// localStorage.setItem('win_time', 'Thu Apr 0 2022 5:32:13 GMT+0300 (Israel Daylight Time)')

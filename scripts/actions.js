@@ -59,6 +59,14 @@ const evalAnswer = () => {
 // ============================= generates random equation 
 
 const randEquation = () => { 
+    const hoursSinceLastEquation = checkTimePassed(localStorage.getItem('lastEquationTime'))[0]
+
+    if (hoursSinceLastEquation < 9) {
+        todayEquation = localStorage.getItem('equation')
+        todayGuess = eval(todayEquation)
+        return
+    }
+
     let eq = ''
     let i = 0
 
@@ -74,6 +82,7 @@ const randEquation = () => {
     todayGuess = eval(todayEquation)
     if(!Number.isInteger(todayGuess)) // if the result is not an integer
         randEquation() // generate new equation
-}
 
-randEquation()
+    localStorage.setItem('equation', todayEquation)
+    localStorage.setItem('lastEquationTime', new Date())
+}

@@ -84,11 +84,10 @@ const setErrorAnimation = (animation, enterDisabled) => {
 
 // ============================= check if 24 passed since last game
 
-const checkTimePassed = () => {
-    let win_time = localStorage.getItem('win_time') // get the win time of the last game
+const checkTimePassed = (lastTime) => {
 
-    if (win_time) { // if there is a win time
-        let msBetweenDates = Math.abs(new Date(win_time).getTime() - new Date().getTime()) // get the difference between the current time and the win time in milliseconds
+    if (lastTime) { // if there is a win time
+        let msBetweenDates = Math.abs(new Date(lastTime).getTime() - new Date().getTime()) // get the difference between the current time and the win time in milliseconds
 
         const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000) // convert the difference to hours
         const minutesBetweenDates = msBetweenDates / (60 * 1000) % 60 // convert the difference to minutes
@@ -97,13 +96,13 @@ const checkTimePassed = () => {
         return [hoursBetweenDates, minutesBetweenDates, secondsBetweenDates] // return the difference in hours and minutes
     }
 
-    return [null, null] // return null if there is no win time
+    return [null, null, null] // return null if there is no win time
 }
 
 // ============================= returns time in format x hours y minutes
 
 const parseTime = () => {
-    let timePassed = checkTimePassed()
+    let timePassed = checkTimePassed(localStorage.getItem('win_time'))
 
     let hours = Math.floor(9 - timePassed[0])
     let minutes = Math.floor(60 - timePassed[1])

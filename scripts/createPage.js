@@ -54,6 +54,8 @@ const createNewGame = () => {
         })
     });
 
+    randEquation()
+
     createResult(rowId, todayGuess) // create the result box
 }
 
@@ -110,12 +112,12 @@ const renderLastGame = () => {
 // ============================= checks what page to render
 
 const renderPage = () => {
-    timePassed = checkTimePassed() // get hours passed since last game 
+    timePassed = checkTimePassed(localStorage.getItem('win_time')) // get hours passed since last game 
     hoursPassed = timePassed[0]
 
     if (hoursPassed && hoursPassed < 9)  // create a new game only after 9 hours passed
         renderLastGame()    
-    else
+    else 
         createNewGame() 
 }
 
