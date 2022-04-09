@@ -61,7 +61,7 @@ const evalAnswer = () => {
 const randEquation = () => { 
     const hoursSinceLastEquation = checkTimePassed(localStorage.getItem('lastEquationTime'))[0]
 
-    if (hoursSinceLastEquation < 9) {
+    if (hoursSinceLastEquation && hoursSinceLastEquation < 9) {
         todayEquation = localStorage.getItem('equation')
         todayGuess = eval(todayEquation)
         return
