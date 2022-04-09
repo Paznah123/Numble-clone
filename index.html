@@ -15,9 +15,9 @@
 
         <div id='head'>
             <h1>
-                <img id='deleteSave' src='images/delete-icon.svg' />
+                <img id='infoBtn' src='images/info-icon.svg'/>
                 NUMBLE
-                <img id='modalBtn' src='images/title-icon.svg'/>
+                <img id='scoresBtn' src='images/title-icon.svg'/>
             </h1>
         </div>
 
@@ -27,7 +27,7 @@
 
         <div id='scoresModal' class='modal'>
             <div class='modal-content'>
-                <span id='close' class='close'>×</span>
+                <span id='scores-close' class='close'>×</span>
                 <div id='modal-body' class='modal-body'>
                     <div>
                         <div class='stat-title'>
@@ -39,6 +39,44 @@
                         <div>
                             <p><b>Guess Distribution</b></p>
                             <canvas id='guess_dist' style='padding-right: 10px;'></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== info modal -->
+
+        <div id='infoModal' class='modal'>
+            <div class='modal-content'>
+                <div class='modal-title'>
+                    <h5 style="margin: 20px 10px;">How to play Numble?</h5>
+                    <span id='info-close' class='close'>×</span>
+                </div>
+                <div>
+                    <hr style="margin: 0 auto">
+                    <div id='info-content'>
+                        <div>
+                            <p>
+                                You get 6 tries to guess the hidden equation! <br/>
+                                You get one hint, the value! <br/>
+                                All your guesses need to equate to the value to be accepted.
+                            </p>
+                            <div id="first-info"></div>
+
+                            <p>The number 2 is in the correct place!</p>
+                            <div id="second-info"></div>
+
+                            <p>The addition sign "+" exists in the equation but in a different place.</p>
+                            <div id="third-info"></div>
+
+                            <p>The division sign "/" does not exist in the equation.</p>
+                            <p style="font-size: 1em;"><b>Rules</b></p>
+                            
+                            <ul>
+                                <li>The equation follows the <b>DMAS</b> order of operations.</li>
+                                <li>Leading 0s are not allowed e.g. 1 will be accepted but 01 won't be.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

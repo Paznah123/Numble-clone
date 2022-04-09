@@ -59,6 +59,14 @@ tbody tr td button.btn {
     transition: border-color .25s ease-out; 
 }
 
+.btn-small {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #fff;
+}
+
 .btn-shake {
     animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
     animation-duration: 1s;

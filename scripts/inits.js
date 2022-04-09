@@ -6,6 +6,8 @@ const initDiv = (props) => {
     div.id = props.id
     div.className = props.className // className is used to add a class to the div
 
+    if (props.style) div.style = props.style
+
     for (let j = 1; j <= props.elementNum; j++) {
             let element = props.createElement(j) // create the element
             div.appendChild(element)  // add the element to the div

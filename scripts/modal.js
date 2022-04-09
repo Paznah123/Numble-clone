@@ -1,3 +1,50 @@
+// ============================= creates info modal
+
+const createInfoEquation = (id, equation, result, bgColors) => {
+    const mainDiv = document.getElementById(id)
+    mainDiv.style = 'display: flex; flex-direction: row; padding-left: 10px; text-align: start;'
+
+    mainDiv.appendChild(initDiv({
+        style: 'content-align:start;',
+        elementNum: INPUTS_ROW_SIZE,
+        createElement: (i) => { return initButton({
+                className: 'btn-small',
+                style: 'margin-right: 4px;',
+                backgroundColor: bgColors[i-1],
+                inner: equation[i-1]
+            })
+        }
+    }))
+
+    mainDiv.appendChild(initDiv({
+        elementNum: 2,
+        createElement: (j) => { return initButton({
+            className: 'btn-small',
+            style: 'color: black;',
+            backgroundColor: 'transparent',
+            inner: j == 1 ? '=' : result
+        })
+    }
+    }))
+}
+
+createInfoEquation('first-info', '2+3-0*1', '5', ['#28a745', '#343a40', '#343a40', '#343a40', '#343a40', '#343a40', '#343a40'])
+createInfoEquation('second-info', '3*2/1+0', '6', ['#343a40', '#343a40', '#343a40', '#343a40', '#343a40', '#ffc107', '#343a40'])
+createInfoEquation('third-info', '2*5-1/1', '9', ['#28a745', '#28a745', '#28a745', '#28a745', '#28a745', '#343a40', '#28a745'])
+
+const infoModal = document.getElementById('infoModal')
+
+document.getElementById('infoBtn') // open the modal
+.onclick = () => {
+    setTimeout(() => {
+        div.classList.remove('modal-close')
+        infoModal.classList.add('show')
+        document.body.appendChild(div)
+    }, 100)
+}
+
+document.getElementById('info-close').onclick = () => safeCloseModal(infoModal) // close the info modal
+
 // ============================= creates modal guesses graph
 
 const data = {
@@ -63,39 +110,24 @@ updateModalStats = () => {
 
 updateModalStats()
 
-
-// ============================= deletes saved data from local storage
- 
-document.getElementById('deleteSave') 
-.onclick = () => { 
-    if (localStorage.getItem('win_time')) { 
-        history.go('index.html') 
-        alert('Statistics deleted! refreshing page...')
-    }
-    localStorage.clear()
-    updateModalStats()
-}
-
 // ============================= modal open and close functionality
 
-const modal = document.getElementById('scoresModal')
+const scoresModal = document.getElementById('scoresModal')
 
 const div = initDiv({ className: 'modal-backdrop' })
 
-document.getElementById('modalBtn') // open the modal
+document.getElementById('scoresBtn') // open the modal
 .onclick = () => {
     setTimeout(() => {
         div.classList.remove('modal-close')
-        modal.classList.add('show')
+        scoresModal.classList.add('show')
         document.body.appendChild(div)
     }, 100)
 }
 
-document.getElementById('close').onclick = () => safeCloseModal() // close the modal
+document.getElementById('scores-close').onclick = () => safeCloseModal(scoresModal) // close the scores modal
 
-window.onclick = (e) => e.target == modal ? safeCloseModal() : null // close the modal if clicked outside of it
-
-const safeCloseModal = () => {
+const safeCloseModal = (modal) => {
     setTimeout(() => {
         modal.classList.remove('show')
         div.classList.add('modal-close')
@@ -108,3 +140,5 @@ const safeCloseModal = () => {
         } catch (err) { } 
     }, 200)
 }
+
+window.onclick = (e) => e.target == scoresModal || e.target == infoModal ? safeCloseModal(e.target) : null // close the modal if clicked outside of it

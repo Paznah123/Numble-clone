@@ -40,6 +40,17 @@
     opacity: 0.5;
 }
 
+.modal-title {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+    text-align: start;
+}
+
+.modal-title span {
+    margin: 0.5 rem auto;
+}
+
 .modal-close {
     animation-name: fadeOut;
     animation-duration: .3s;

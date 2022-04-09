@@ -39,6 +39,17 @@ td {
     text-align: left;
 }
 
+p {
+    text-align: start;
+    font-size: 0.8rem;
+    padding: 10px;
+}
+
+li {
+    text-align: start;
+    font-size: 0.8rem;
+}
+
 /* =================== Page main divs =================== */
 
 #head {
