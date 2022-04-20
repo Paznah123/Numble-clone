@@ -5,6 +5,11 @@
     color: rgb(65, 65, 65);
 }
 
+html {
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+}
+
 body {
     background-color: rgba(0, 0, 0, 0.1);
 }
